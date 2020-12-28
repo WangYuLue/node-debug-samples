@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-demo04",
+      "type": "shell",
+      "command": "cd demo04 && tsc"
+    },
+    {
+      "label": "build-demo05",
+      "type": "shell",
+      "command": "cd demo05 && tsc"
+    }
+  ]
+}
