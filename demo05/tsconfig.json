@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "out",
+    "sourceMap": true
+  },
+  "files": [
+    "./index.ts"
+  ]
+}
