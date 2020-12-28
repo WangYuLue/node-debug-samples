@@ -51,7 +51,7 @@
 
 参考 `demo03`, 用 `debug03` 启动调试
 
-```json
+```js
 {
   "type": "node",
   "request": "launch",
@@ -78,7 +78,7 @@
 
 `tsc` 编译时会用到 `tsconfig.json` 配置文件
 
-```json
+```js
 {
   // 编译配置项
   "compilerOptions": {
