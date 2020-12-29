@@ -135,10 +135,18 @@
 
 参考 `demo05`, 用 `debug05` 启动调试
 
-### 7、调试远程前端项目
+### 7、typescript 动态更新
+
+参考 `demo06`, 借助 `nodemon` 的能力；这里写了 `nodemon.json` 配置文件，直接在 demo 目录下运行 `nodemon` 命令即可运行；
+
+参考链接：
+
+[StackOverFlow: How to watch and reload ts-node when TypeScript files change](https://stackoverflow.com/questions/37979489/how-to-watch-and-reload-ts-node-when-typescript-files-change)
+
+### 8、调试远程前端项目
 
 <!-- todo -->
 
-### 8、调试 react + typescript 前端项目
+### 9、调试 react + typescript 前端项目
 
 <!-- todo -->

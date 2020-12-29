@@ -10,6 +10,11 @@
       "label": "build-demo05",
       "type": "shell",
       "command": "cd demo05 && tsc"
+    },
+    {
+      "label": "build-demo06",
+      "type": "shell",
+      "command": "cd demo06 && tsc"
     }
   ]
 }
