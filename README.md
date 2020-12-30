@@ -1,6 +1,15 @@
-## node 调试例子
+# node 调试例子
 
 环境： node:v14+
+编辑器：VS Code
+
+全局安装 `nodemon`、`ts-node`、`parcel`
+
+```bash
+yarn global add nodemon
+yarn global add ts-node
+yarn global add parcel
+```
 
 ```bash
 # 安装依赖
@@ -150,10 +159,71 @@ yarn
 
 [StackOverFlow: How to watch and reload ts-node when TypeScript files change](https://stackoverflow.com/questions/37979489/how-to-watch-and-reload-ts-node-when-typescript-files-change)
 
-### 8、调试远程前端项目
+### 8、调试 html 文件
 
-<!-- todo -->
+这需要借助 `Debugger for Chrome` 插件来调试，下载这个插件；
 
-### 9、调试 react + typescript 前端项目
+参考 `demo07`, 用 `debug07` 启动调试
 
-<!-- todo -->
+```json
+{
+  "type": "chrome",
+  "request": "launch",
+  "name": "debug-07",
+  "file": "${workspaceFolder}/demo07/index.html"
+}
+```
+
+### 9、调试前端项目
+
+这需要借助 `Debugger for Chrome` 插件来调试，下载这个插件；
+
+这个例子中用 `parcel` 来启动项目；
+
+参考 `demo07`；
+
+进入 demo07, 用 `parcel index.html --port 8899` 启动项目，用 `debug07.1` 启动调试：
+
+```json
+{
+  "type": "chrome",
+  "request": "launch",
+  "name": "debug-07.1",
+  "url": "http://localhost:8899/index.html",
+  "webRoot": "${workspaceFolder}/demo07"
+}
+```
+
+### 10、调试 typescript 前端项目（一）
+
+这个例子中用 `parcel` 来启动项目；
+
+这需要借助 `Debugger for Chrome` 插件来调试，下载这个插件；
+
+参考 `demo08`, 以 `react` 为例；
+
+进入 demo08，`yarn` 下载依赖，并用 `parcel index.html --port 8899` 启动项目，用 `debug08` 启动调试：
+
+```js
+{
+  "type": "chrome",
+  "request": "launch",
+  "name": "debug-08",
+  "url": "http://localhost:8899",
+  "webRoot": "${workspaceFolder}/demo08",
+  "breakOnLoad": true,
+  "sourceMapPathOverrides": {
+    "../*": "${workspaceFolder}/demo08/*" // 或者：  "../*": "${webRoot}/*"
+  }
+}
+```
+
+### 11、调试 typescript 前端项目（二）
+
+这个例子中用 `webpack` 来启动项目；
+
+这需要借助 `Debugger for Chrome` 插件来调试，下载这个插件；
+
+参考 `demo09`, 以 `react` 为例；
+
+进入 demo09，`yarn` 下载依赖，并用 `todo` 启动项目，用 `debug09` 启动调试：

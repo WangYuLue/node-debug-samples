@@ -39,33 +39,57 @@
         "${workspaceFolder}/demo04/out/**/*.js"
       ],
     },
-    // {
-    //   "type": "node",
-    //   "request": "launch",
-    //   "name": "debug-05",
-    //   "preLaunchTask": "build-demo05",
-    //   "program": "${workspaceFolder}/demo05/index.ts",
-    //   "outFiles": [
-    //     "${workspaceFolder}/demo05/out/**/*.js"
-    //   ],
-    //   "skipFiles": [
-    //     "<node_internals>/**",
-    //     "${workspaceFolder}/node_modules/**"
-    //   ],
-    // },
-    // {
-    //   "type": "node",
-    //   "request": "launch",
-    //   "name": "debug-06",
-    //   "preLaunchTask": "build-demo06",
-    //   "program": "${workspaceFolder}/demo06/src/index.ts",
-    //   "outFiles": [
-    //     "${workspaceFolder}/demo06/out/**/*.js"
-    //   ],
-    //   "skipFiles": [
-    //     "<node_internals>/**",
-    //     "${workspaceFolder}/node_modules/**"
-    //   ],
-    // }
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "debug-05",
+      "preLaunchTask": "build-demo05",
+      "program": "${workspaceFolder}/demo05/index.ts",
+      "outFiles": [
+        "${workspaceFolder}/demo05/out/**/*.js"
+      ],
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "debug-06",
+      "preLaunchTask": "build-demo06",
+      "program": "${workspaceFolder}/demo06/src/index.ts",
+      "outFiles": [
+        "${workspaceFolder}/demo06/out/**/*.js"
+      ],
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "debug-07",
+      "file": "${workspaceFolder}/demo07/index.html"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "debug-07.1",
+      "url": "http://localhost:8899/index.html",
+      "webRoot": "${workspaceFolder}/demo07"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "debug-08",
+      "url": "http://localhost:8899",
+      "webRoot": "${workspaceFolder}/demo08",
+      "breakOnLoad": true,
+      "sourceMapPathOverrides": {
+        "../*": "${workspaceFolder}/demo08/*" // 或者：  "../*": "${webRoot}/*"
+      }
+    }
   ]
 }
