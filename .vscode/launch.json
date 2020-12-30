@@ -86,9 +86,21 @@
       "name": "debug-08",
       "url": "http://localhost:8899",
       "webRoot": "${workspaceFolder}/demo08",
-      "breakOnLoad": true,
       "sourceMapPathOverrides": {
         "../*": "${workspaceFolder}/demo08/*" // 或者：  "../*": "${webRoot}/*"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "debug-09",
+      "url": "http://localhost:8899",
+      "webRoot": "${workspaceFolder}/demo09",
+      "sourceMapPathOverrides": {
+        "webpack:///./~/*": "${webRoot}/node_modules/*", // Example: "webpack:///./~/querystring/index.js" -> "/Users/me/project/node_modules/querystring/index.js"
+        "webpack:///./*": "${webRoot}/*", // Example: "webpack:///./src/app.js" -> "/Users/me/project/src/app.js",
+        "webpack:///*": "*", // Example: "webpack:///project/app.ts" -> "/project/app.ts"
+        "webpack:///src/*": "${webRoot}/*", // Example: "webpack:///src/app.js" -> "/Users/me/project/app.js"
       }
     }
   ]

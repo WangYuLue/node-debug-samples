@@ -1,11 +1,6 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "outDir": "out",
-    "sourceMap": true,
     "jsx": "react"
-  },
-  "files": [
-    "src/index.tsx"
-  ]
+  }
 }

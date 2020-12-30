@@ -1,15 +1,16 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 
 function App() {
+  // debug here
   const a = 1;
   const b = 2;
   const c = a + b;
   console.log(c);
 
   return (
-    <div>hello react</div>
+    <div>hello react launched by webpack</div>
   )
 }
 
-ReactDom.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))

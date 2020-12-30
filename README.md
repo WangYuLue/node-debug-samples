@@ -194,7 +194,7 @@ yarn
 }
 ```
 
-### 10、调试 typescript 前端项目（一）
+### 10、调试 typescript 前端项目（由 parcel 启动）
 
 这个例子中用 `parcel` 来启动项目；
 
@@ -211,14 +211,21 @@ yarn
   "name": "debug-08",
   "url": "http://localhost:8899",
   "webRoot": "${workspaceFolder}/demo08",
-  "breakOnLoad": true,
   "sourceMapPathOverrides": {
     "../*": "${workspaceFolder}/demo08/*" // 或者：  "../*": "${webRoot}/*"
   }
 }
 ```
 
-### 11、调试 typescript 前端项目（二）
+注意上面的 `sourceMapPathOverrides` 字段，它表示源路径从 sourcemap 到这些源在磁盘上的位置的映射。当源代码不准确或者无法在构建过程中修复时，这种方法很有用。
+
+参考链接：
+
+[VS Code: Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+
+[Parcel Docs](https://parceljs.org/debugging.html)
+
+### 11、调试 typescript 前端项目（由 webpack 启动）
 
 这个例子中用 `webpack` 来启动项目；
 
@@ -226,4 +233,34 @@ yarn
 
 参考 `demo09`, 以 `react` 为例；
 
-进入 demo09，`yarn` 下载依赖，并用 `todo` 启动项目，用 `debug09` 启动调试：
+进入 demo09，`yarn` 下载依赖，并用 `yarn start` 启动项目，用 `debug09` 启动调试：
+
+```js
+{
+  "type": "chrome",
+  "request": "launch",
+  "name": "debug-09",
+  "url": "http://localhost:8899",
+  "webRoot": "${workspaceFolder}/demo09",
+  "sourceMapPathOverrides": {
+    "webpack:///./~/*": "${webRoot}/node_modules/*", // Example: "webpack:///./~/querystring/index.js" -> "/Users/me/project/node_modules/querystring/index.js"
+    "webpack:///./*": "${webRoot}/*", // Example: "webpack:///./src/app.js" -> "/Users/me/project/src/app.js",
+    "webpack:///*": "*", // Example: "webpack:///project/app.ts" -> "/project/app.ts"
+    "webpack:///src/*": "${webRoot}/*", // Example: "webpack:///src/app.js" -> "/Users/me/project/app.js"
+  }
+}
+```
+
+注意上面的 `sourceMapPathOverrides` 字段，参考自 [VS Code: Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) 文档
+
+注意点：在 `webpack` 的配置中，需要设置 `devtool: 'source-map'`
+
+```js
+module.exports = merge(config, {
+  mode: 'development',
+  devtool: 'source-map', // 这里需要设置成 source-map 用来生成 map 文件
+  devServer: {
+    port: 8899
+  }
+})
+```
