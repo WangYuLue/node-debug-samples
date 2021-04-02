@@ -146,7 +146,10 @@ tips: 下面例子中，例如 `debug01`，指的是 vscode 中的调试按钮�
 }
 ```
 
-注意这里新的配置参数 `preLaunchTask`，他表示在调试之前需要执行的任务，这个需要在 `tasks.json` 中编写，下面会讲到；
+注意这里新的配置参数：
+
+- `preLaunchTask` 表示在调试之前需要执行的任务，这个需要在 `tasks.json` 中编写，下面会讲到；
+- `outFiles` 表示 `typescript` 的源映射文件，只有正确配置好它，才能正常调试；
 
 #### (3)、第三步：编写 tasks.json 文件
 
