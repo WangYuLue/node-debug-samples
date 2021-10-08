@@ -64,7 +64,7 @@ tips: 下面例子中，例如 `debug01`，指的是 vscode 中的调试按钮�
 }
 ```
 
-### 3、调试已启动的 node 服务
+### 2.1、调试已启动的 node 服务
 
 以 `express` 为例：
 
@@ -83,7 +83,7 @@ tips: 下面例子中，例如 `debug01`，指的是 vscode 中的调试按钮�
 
 [VSCode 调试中 launch.json 配置不完全指南：调试已启动的 Node.js 程序](https://www.barretlee.com/blog/2019/03/18/debugging-in-vscode-tutorial/)
 
-### 4、过滤不想调试的文件
+### 3、过滤不想调试的文件
 
 参考 `demo03`, 用 `debug03` 启动调试
 
@@ -106,7 +106,7 @@ tips: 下面例子中，例如 `debug01`，指的是 vscode 中的调试按钮�
 
 [VS Code: Skipping uninteresting code](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_skipping-uninteresting-code-node-chrome)
 
-### 5、调试 typescript
+### 4、调试 typescript
 
 参考 `demo04`, 用 `debug04` 启动调试
 
@@ -118,7 +118,7 @@ tips: 下面例子中，例如 `debug01`，指的是 vscode 中的调试按钮�
 {
   // 编译配置项
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     // 输出文件夹
     "outDir": "out",
     // 编译生成 map 文件，这个配置对调试至关重要
@@ -170,11 +170,37 @@ tips: 下面例子中，例如 `debug01`，指的是 vscode 中的调试按钮�
 
 > 注意 `demo04` 中的 `package.json`, 它虽然是个空文件，但是是比不可少的，因为项目根目录的 `package.json` 采用了 `"type": "module"` 模式，调试会受此影响，所以用一个空的 `package.json` 来隔绝这个影响
 
-### 6、调试 typescript 服务
+### 4.1、调试 typescript 的另外一种方式
+
+参考 `demo04.1`, 用 `debug04.1` 启动调试
+
+```json
+{
+  "type": "node",
+  "request": "launch",
+  "name": "debug-04.1",
+  "runtimeExecutable": "node", // 可加可不加
+  "runtimeArgs": [
+    "-r",
+    "ts-node/register",
+  ],
+  "args": [
+    "${workspaceFolder}/demo04/index.ts"
+  ]
+}
+```
+
+其中，`ts-node/register` 表示 node 引用了 ts-node 的模块，从而可以直接运行 ts 代码，例如：
+
+```bash
+node -r ts-node/register index.ts
+```
+
+### 5、调试 typescript 服务
 
 参考 `demo05`, 用 `debug05` 启动调试
 
-### 7、typescript 动态更新
+### 6、typescript 动态更新
 
 参考 `demo06`, 借助 `nodemon` 的能力；这里写了 `nodemon.json` 配置文件，直接在 demo 目录下运行 `nodemon` 命令即可运行；
 
@@ -182,7 +208,7 @@ tips: 下面例子中，例如 `debug01`，指的是 vscode 中的调试按钮�
 
 [StackOverFlow: How to watch and reload ts-node when TypeScript files change](https://stackoverflow.com/questions/37979489/how-to-watch-and-reload-ts-node-when-typescript-files-change)
 
-### 8、调试 html 文件
+### 7、调试 html 文件
 
 这需要借助 `Debugger for Chrome` 插件来调试，下载这个插件；
 
@@ -197,7 +223,7 @@ tips: 下面例子中，例如 `debug01`，指的是 vscode 中的调试按钮�
 }
 ```
 
-### 9、调试前端项目
+### 7.1、调试前端项目
 
 这需要借助 `Debugger for Chrome` 插件来调试，下载这个插件；
 
@@ -217,7 +243,7 @@ tips: 下面例子中，例如 `debug01`，指的是 vscode 中的调试按钮�
 }
 ```
 
-### 10、调试 typescript 前端项目（由 parcel 启动）
+### 8、调试 typescript 前端项目（由 parcel 启动）
 
 这个例子中用 `parcel` 来启动项目；
 
@@ -248,7 +274,7 @@ tips: 下面例子中，例如 `debug01`，指的是 vscode 中的调试按钮�
 
 [Parcel Docs](https://parceljs.org/debugging.html)
 
-### 11、调试 typescript 前端项目（由 webpack 启动）
+### 9、调试 typescript 前端项目（由 webpack 启动）
 
 这个例子中用 `webpack` 来启动项目；
 
@@ -287,3 +313,38 @@ module.exports = merge(config, {
   }
 })
 ```
+
+### 10、在 nest  中调试代码
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "debug-nest",
+      "args": [
+        "${workspaceFolder}/src/main.ts"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register",
+        "-r",
+        "tsconfig-paths/register"
+      ],
+      "sourceMaps": true,
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "console": "integratedTerminal"
+    }
+  ]
+}
+```
+
+参考链接：
+
+- [**在 vscode 中调试 nest**](https://segmentfault.com/a/1190000019064197)
+- [使用ts-node和vsc来调试TypeScript代码](https://segmentfault.com/a/1190000010605261)
+- [VSCode 调试中 launch.json 配置不完全指南](https://www.barretlee.com/blog/2019/03/18/debugging-in-vscode-tutorial/)

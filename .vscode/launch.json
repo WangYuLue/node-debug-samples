@@ -42,6 +42,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "debug-04.1",
+      "runtimeExecutable": "node", // 可加可不加
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register",
+      ],
+      "args": [
+        "${workspaceFolder}/demo04/index.ts"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "debug-05",
       "preLaunchTask": "build-demo05",
       "program": "${workspaceFolder}/demo05/index.ts",
